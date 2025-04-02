@@ -3,7 +3,9 @@ package org.spring.ioc.beanFactory;
 import org.spring.ioc.intro.Car;
 import org.spring.ioc.intro.Vehicle;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 
 //Bean factory is the simplest ioc container that will be responsible for instantiating,
 //configure and manage the life cycle of spring beans.
@@ -12,6 +14,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class BeanFactoryIntro {
     public static void main(String[] args){
+//        BeanFactory beanFactory = new XmlBeanFactory("config.xml");
+//        Note: XmlBeanFactory has been deprecated as of Spring 3.1.
+//            It's recommended to use ApplicationContext implementations instead.
+        /*While XmlBeanFactory was the primary implementation, other specialized factories like DefaultListableBeanFactory exist.
+        These provide additional features like programmatic bean registration.*/
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("config.xml");
         Vehicle vehicle = beanFactory.getBean("Object2", Vehicle.class);
         vehicle.run();
